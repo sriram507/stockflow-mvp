@@ -10,13 +10,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-/* ---------- HEALTH CHECK ---------- */
+/* ----- HEALTH CHECK -----*/
 
 app.get("/", (req, res) => {
   res.send("StockFlow backend is running");
 });
 
-/* ---------- AUTH ---------- */
+/* ----- AUTH ----- */
 
 // Signup
 app.post("/signup", async (req, res) => {
@@ -73,7 +73,7 @@ app.post("/login", (req, res) => {
   );
 });
 
-/* ---------- PRODUCTS ---------- */
+/* ----- PRODUCTS ----- */
 
 // Get all products
 app.get("/products", auth, (req, res) => {
@@ -170,7 +170,7 @@ app.delete("/products/:id", auth, (req, res) => {
   );
 });
 
-/* ---------- DASHBOARD ---------- */
+/* ----- DASHBOARD -----*/
 
 app.get("/dashboard", auth, (req, res) => {
   db.get(
@@ -208,7 +208,7 @@ app.get("/dashboard", auth, (req, res) => {
   );
 });
 
-/* ---------- SETTINGS ---------- */
+/* ----- SETTINGS ----- */
 
 app.put("/settings", auth, (req, res) => {
   const { value } = req.body;
@@ -223,7 +223,7 @@ app.put("/settings", auth, (req, res) => {
   );
 });
 
-/* ---------- SERVER ---------- */
+/* ----- SERVER ----- */
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
